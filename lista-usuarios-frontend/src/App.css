@@ -1,0 +1,24 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+
+  li {
+    font-size: 17px;
+    font-weight: bold;   
+  }
+}
+
+.App {
+  text-align: center;
+}
+ 

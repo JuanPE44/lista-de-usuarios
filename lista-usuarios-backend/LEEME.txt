@@ -1,0 +1,3 @@
+// el archivo sql se importa en el phpmyadmin 
+
+// el archivo usuarios va en la carpeta htdocs de xammp
