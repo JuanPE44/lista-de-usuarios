@@ -10,7 +10,7 @@ export default function ListadoUsuarios() {
       .then((res) => res.json())
       .then((data) => {
         setUsuarios(data)
-        setCargando(false)
+        setCargando(false)  
       });
   }
 
@@ -27,11 +27,11 @@ export default function ListadoUsuarios() {
   }, []);
 
   return (
-    <div className="Lista-usuarios">
-      <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl my-8">Listado de usuarios</h1>
+    <div className="px-4">
+      <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl my-8 text-center">Listado de usuarios</h1>
       {cargando ? <h1>cargando...</h1> : 
       (
-        <ul className="grid gap-x-8 gap-y-10 lg:grid-cols-2">
+        <ul className="grid gap-x-8 gap-y-10 lg:grid-cols-2 justify-center pb-10">
           {usuarios.map((usuario) => {
               return (
                 <Usuario
@@ -40,6 +40,7 @@ export default function ListadoUsuarios() {
                   id={usuario.id}
                   nombre={usuario.nombre}
                   email={usuario.email}
+                  urlImg={usuario.urlImg}
                 />
               );              
           })}

@@ -1,20 +1,20 @@
 
-
+import { useState } from "react";
 import { useNavigate  } from 'react-router-dom'
  
 export default function CrearUsuario() {
-  const datos = { nombre: "", email: "" };
+  const [usuario, setUsuario] = useState({})
   const navegar = useNavigate();
 
   const actualizarDatos = (e) => {
-    datos[e.target.name] = e.target.value;
+    setUsuario({...usuario, [e.target.name]: e.target.value});
   };
 
   const enviarDatos = (e) => {
     e.preventDefault();
     fetch("http://localhost/usuarios/?insertar=1", {
       method: "POST",
-      body: JSON.stringify(datos),
+      body: JSON.stringify(usuario),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -50,7 +50,7 @@ export default function CrearUsuario() {
               required
             />
           </div>
-          <div className="mb-8">
+          <div className="mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2 text-start"
               htmlFor="email"
@@ -63,6 +63,23 @@ export default function CrearUsuario() {
               type="text"
               id="email"
               placeholder="Email"
+              onChange={actualizarDatos}
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2 text-start"
+              htmlFor="urlImg"
+            >
+              UrlImg
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="urlImg"
+              type="text"
+              id="urlImg"
+              placeholder="UrlImg"
               onChange={actualizarDatos}
               required
             />

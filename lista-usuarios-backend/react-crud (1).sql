@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-03-2023 a las 02:38:56
+-- Tiempo de generación: 10-03-2023 a las 20:17:03
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -32,22 +32,17 @@ USE `react-crud`;
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `email` varchar(255) NOT NULL,
+  `urlImg` varchar(7000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `email`) VALUES
-(8, 'juan', 'juantandil123@gmail.com'),
-(9, 'pedro', 'pedro@gmail.com'),
-(10, 'awdawwad', 'juantandil123@gmail.com'),
-(11, 'awdawwad', 'juantandil123@gmail.com'),
-(12, 'pedro', 'pedro@gmail.com'),
-(13, 'pedro', 'pedro@gmail.com'),
-(14, 'pedro', 'pedro@gmail.com'),
-(15, 'pedro', 'pedro@gmail.com');
+INSERT INTO `usuarios` (`id`, `nombre`, `email`, `urlImg`) VALUES
+(20, 'messi', 'messi@gmail.com', 'https://www.srdeportescr.com/wp-content/uploads/2023/03/sports.jpg'),
+(21, 'El diego', 'gol@gmail.com', 'https://media.ambito.com/p/58073f9708ba8a859fb720b0cf9a0cdf/adjuntos/239/imagenes/039/897/0039897879/730x0/smart/el-diegowebp.png');
 
 --
 -- Índices para tablas volcadas
@@ -67,7 +62,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

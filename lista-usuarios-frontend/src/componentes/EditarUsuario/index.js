@@ -1,44 +1,45 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 
 export default function EditarUsuarios () {
-  const datos = { nombre: "", email: "" };
   const [usuario, setUsuario] = useState({})
   const [cargando,setCargando] = useState(true)
+  const navegar = useNavigate();
+  const id = useParams().id
   
   const actualizarDatos = (e) => {
-    datos[e.target.name] = e.target.value;
+    setUsuario({...usuario, [e.target.name]: e.target.value });
   };
 
   const obtenerDatos = (id) => {
     fetch(`http://localhost/usuarios/?consultar=${id}`)
       .then((res) => res.json())
-      .then((data) => {
+      .then((datos) => {
+        setUsuario({nombre:datos[0].nombre,email:datos[0].email, urlImg:datos[0].urlImg})
         setCargando(false)
-        setUsuario({nombre:data[0].nombre,email:data[0].email})
       })
       .catch((err) => console.log(err));
   };
 
   const enviarDatos = (e) => {
-     /*
+
     e.preventDefault();
-   
-    fetch("http://localhost/usuarios/?insertar=1", {
+    fetch(`http://localhost/usuarios/?actualizar=${id}`, {
       method: "POST",
-      body: JSON.stringify(datos),
+      body: JSON.stringify(usuario),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data)
+        navegar('/')
+      })
       .catch((err) => console.log(err));
-      */
   };
 
   useEffect(()=>{     
-    obtenerDatos(13)    
-    console.log(usuario)
-  }, [usuario])
+    obtenerDatos(id)    
+  }, [id])
 
 
   return (
@@ -72,7 +73,7 @@ export default function EditarUsuarios () {
               required
             />
           </div>
-          <div className="mb-8">
+          <div className="mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2 text-start"
               htmlFor="email"
@@ -86,6 +87,24 @@ export default function EditarUsuarios () {
               id="email"
               value={usuario.email}
               placeholder="Email"
+              onChange={actualizarDatos}
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2 text-start"
+              htmlFor="urlImg"
+            >
+              UrlImg
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              name="urlImg"
+              type="text"
+              id="urlImg"
+              value={usuario.urlImg}
+              placeholder="UrlImg"
               onChange={actualizarDatos}
               required
             />

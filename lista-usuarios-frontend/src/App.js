@@ -1,4 +1,3 @@
-import './App.css';
 import {BrowserRouter,Routes,Route,Link} from 'react-router-dom';
 import ListadoUsuarios from './componentes/ListadoUsuarios';
 import CrearUsuario from './componentes/CrearUsuario';
@@ -8,8 +7,8 @@ function App() {
   return (
     <div className="App min-h-screen bg-white text-white">
       <BrowserRouter>
-        <nav className='font-sans bg-slate-900'>
-          <ul className='text-lg text-white font-semibold'>
+        <nav className='font-sans bg-slate-900 text-center py-8'>
+          <ul className='text-lg text-white font-semibold flex gap-3 justify-center'>
             <li>
               <Link className='' to={'/'}>Listado</Link>      
             </li>

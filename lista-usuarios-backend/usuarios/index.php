@@ -34,9 +34,11 @@ if(isset($_GET["insertar"])){
     $data = json_decode(file_get_contents("php://input"));
     $nombre=$data->nombre;
     $email=$data->email;
-        if(($email!="")&&($nombre!="")){
+    $urlImg=$data->urlImg;
+
+        if(($email!="")&&($nombre!="")&&($urlImg!="")){
             
-    $sqlUsuarios = mysqli_query($conexionBD,"INSERT INTO usuarios(nombre,email) VALUES('$nombre','$email') ");
+    $sqlUsuarios = mysqli_query($conexionBD,"INSERT INTO usuarios(nombre,email,urlImg) VALUES('$nombre','$email','$urlImg') ");
     echo json_encode(["success"=>1]);
         }
     exit();
@@ -48,9 +50,10 @@ if(isset($_GET["actualizar"])){
 
     $id=(isset($data->id))?$data->id:$_GET["actualizar"];
     $nombre=$data->nombre;
-    $correo=$data->correo;
+    $email=$data->email;
+    $urlImg=$data->urlImg;
     
-    $sqlUsuarios = mysqli_query($conexionBD,"UPDATE usuarios SET nombre='$nombre',correo='$correo' WHERE id='$id'");
+    $sqlUsuarios = mysqli_query($conexionBD,"UPDATE usuarios SET nombre='$nombre',email='$email' ,urlImg='$urlImg' WHERE id='$id'");
     echo json_encode(["success"=>1]);
     exit();
 }
