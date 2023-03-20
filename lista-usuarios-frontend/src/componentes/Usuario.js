@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 export default function Usuario({ id, nombre, email, urlImg, borrarUsuario }) {
   return (
     <li className="max-w-xl text-center">
-      <div className="flex items-center gap-x-6 border-2 rounded-md p-6 min-w-max">
-        <img className="h-16 w-16 rounded-full object-cover flex-none" src={urlImg} alt="" />
+      <div className="flex items-center gap-x-6 rounded-md p-6 min-w-max">
+        <img className="h-20 w-20 rounded-full object-cover flex-none" src={urlImg} alt="" />
         <div className="flex-1">
           <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900 capitalize">{nombre}</h3>
           <p className="text-sm font-semibold leading-6 text-indigo-600">{email}</p>          
